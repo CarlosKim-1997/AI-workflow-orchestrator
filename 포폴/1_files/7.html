@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<!-- saved from url=(0044)https://www.genspark.ai/api/files/s/9Wh5hE93 -->
+<html lang="ko"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>기술 구성</title>
+<link href="./tailwind.min.css" rel="stylesheet">
+<link href="./css2(1)" rel="stylesheet">
+<link href="./all.min.css" rel="stylesheet">
+<style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Noto Sans KR', sans-serif;
+            overflow: hidden;
+            background-color: #0f172a; /* Slate 900 */
+        }
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            background-color: #0f172a;
+            color: white;
+            overflow: hidden;
+        }
+        .bg-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.05;
+            z-index: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2394a3b8' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        .header {
+            padding: 40px 80px 20px;
+            z-index: 10;
+        }
+        .main-title {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: white;
+            border-left: 6px solid #8b5cf6; /* Violet 500 */
+            padding-left: 20px;
+            margin: 0;
+        }
+        .subtitle {
+            font-size: 1rem;
+            color: #94a3b8; /* Slate 400 */
+            margin-top: 5px;
+            padding-left: 26px;
+            font-weight: 500;
+        }
+        
+        .content-wrapper {
+            flex: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            gap: 24px;
+            padding: 10px 80px 50px;
+            z-index: 10;
+        }
+
+        .tech-card {
+            background-color: #1e293b; /* Slate 800 */
+            border-radius: 16px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.2s;
+        }
+        
+        .card-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .icon-wrapper {
+            width: 48px;
+            height: 48px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-right: 16px;
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #f8fafc;
+        }
+
+        .card-body {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .tech-item {
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .tech-bullet {
+            margin-top: 6px;
+            margin-right: 10px;
+            font-size: 0.6rem;
+            opacity: 0.7;
+        }
+
+        .tech-text {
+            font-size: 0.95rem;
+            color: #cbd5e1; /* Slate 300 */
+            line-height: 1.5;
+        }
+        .tech-highlight {
+            font-weight: 600;
+            color: white;
+        }
+
+        .tag-container {
+            margin-top: auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            padding-top: 16px;
+        }
+
+        .tech-tag {
+            font-size: 0.75rem;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-weight: 600;
+            background-color: #0f172a;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Specific Card Styles */
+        /* UI Card */
+        .card-ui { border-top: 4px solid #ff4b4b; }
+        .card-ui .icon-wrapper { background-color: rgba(255, 75, 75, 0.1); color: #ff4b4b; }
+        .card-ui .tech-bullet { color: #ff4b4b; }
+        .card-ui .tech-tag { color: #ff4b4b; }
+
+        /* AI Card */
+        .card-ai { border-top: 4px solid #10a37f; }
+        .card-ai .icon-wrapper { background-color: rgba(16, 163, 127, 0.1); color: #10a37f; }
+        .card-ai .tech-bullet { color: #10a37f; }
+        .card-ai .tech-tag { color: #10a37f; }
+
+        /* Integration Card */
+        .card-integ { border-top: 4px solid #3b82f6; }
+        .card-integ .icon-wrapper { background-color: rgba(59, 130, 246, 0.1); color: #3b82f6; }
+        .card-integ .tech-bullet { color: #3b82f6; }
+        .card-integ .tech-tag { color: #3b82f6; }
+
+        /* Architecture Card */
+        .card-arch { border-top: 4px solid #a855f7; }
+        .card-arch .icon-wrapper { background-color: rgba(168, 85, 247, 0.1); color: #a855f7; }
+        .card-arch .tech-bullet { color: #a855f7; }
+        .card-arch .tech-tag { color: #a855f7; }
+
+    </style>
+<style id="slide-selected-style">
+  [data-slide-selected]::before
+  /* [data-slide-hover-selected]::before */ {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    width: 100%;
+    height: 100%;
+    box-sizing: content-box;
+    padding: 4px;
+    border-radius: 0px;
+    outline: 2px solid #0f7fff !important;
+    z-index: 10000;
+    pointer-events: none;
+  }
+
+ /* [data-slide-hover-selected], */
+  [data-slide-selected] {
+    position: relative;
+    outline: none;
+    cursor: default;
+  }
+
+  img[data-slide-selected],
+  img[data-slide-hover-selected],
+  [data-slide-hover-selected],
+  [item-slide-click-selected],
+  [item-slide-selected] {
+    border: 2px solid #0f7fff !important;
+  }
+
+
+</style><style>undefined</style><link rel="preconnect" href="https://fonts.googleapis.com/" crossorigin="use-credentials"><link rel="preconnect" href="https://fonts.gstatic.com/"><link rel="stylesheet" href="./css2"></head>
+<body>
+<div class="slide-container">
+<!-- Background -->
+<div class="bg-pattern"></div>
+<!-- Header -->
+<div class="header">
+<h1 class="main-title">기술 구성 (Tech Stack)</h1>
+<p class="subtitle">안정적이고 확장 가능한 엔터프라이즈급 기술 아키텍처</p>
+</div>
+<!-- Grid Content -->
+<div class="content-wrapper">
+<!-- 1. UI -->
+<div class="tech-card card-ui">
+<div class="card-header">
+<div class="icon-wrapper">
+<i class="fa-solid fa-desktop"></i>
+</div>
+<h2 class="card-title">User Interface</h2>
+</div>
+<div class="card-body">
+<div class="tech-item">
+<i class="fa-solid fa-circle tech-bullet"></i>
+<p class="tech-text"><span class="tech-highlight">Streamlit:</span> Python 기반의 빠르고 직관적인 웹 애플리케이션 프레임워크</p>
+</div>
+<div class="tech-item">
+<i class="fa-solid fa-circle tech-bullet"></i>
+<p class="tech-text">실시간 데이터 시각화 및 인터랙티브 위젯 제공</p>
+</div>
+<div class="tech-item">
+<i class="fa-solid fa-circle tech-bullet"></i>
+<p class="tech-text">복잡한 프론트엔드 코드 없이 데이터 중심의 UI/UX 구현</p>
+</div>
+</div>
+<div class="tag-container">
+<span class="tech-tag">Streamlit</span>
+<span class="tech-tag">Python</span>
+<span class="tech-tag">Pandas</span>
+</div>
+</div>
+<!-- 2. AI -->
+<div class="tech-card card-ai">
+<div class="card-header">
+<div class="icon-wrapper">
+<i class="fa-solid fa-brain"></i>
+</div>
+<h2 class="card-title">AI &amp; Intelligence</h2>
+</div>
+<div class="card-body">
+<div class="tech-item">
+<i class="fa-solid fa-circle tech-bullet"></i>
+<p class="tech-text"><span class="tech-highlight">OpenAI API:</span> GPT-4o / GPT-3.5 Turbo 모델을 활용한 자연어 분석</p>
+</div>
+<div class="tech-item">
+<i class="fa-solid fa-circle tech-bullet"></i>
+<p class="tech-text">프롬프트 엔지니어링을 통한 JSON 형식의 구조화된 데이터 추출</p>
+</div>
+<div class="tech-item">
+<i class="fa-solid fa-circle tech-bullet"></i>
+<p class="tech-text">Context 의도 파악 및 다국어 지원</p>
+</div>
+</div>
+<div class="tag-container">
+<span class="tech-tag">OpenAI</span>
+<span class="tech-tag">LLM</span>
+<span class="tech-tag">Prompt Engineering</span>
+</div>
+</div>
+<!-- 3. Integration -->
+<div class="tech-card card-integ">
+<div class="card-header">
+<div class="icon-wrapper">
+<i class="fa-solid fa-share-nodes"></i>
+</div>
+<h2 class="card-title">Integration</h2>
+</div>
+<div class="card-body">
+<div class="tech-item">
+<i class="fa-solid fa-circle tech-bullet"></i>
+<p class="tech-text"><span class="tech-highlight">Jira Cloud API:</span> REST API를 통한 이슈 생성 및 상태 관리</p>
+</div>
+<div class="tech-item">
+<i class="fa-solid fa-circle tech-bullet"></i>
+<p class="tech-text"><span class="tech-highlight">Slack API:</span> Webhook 및 Bot Token을 이용한 채널 알림</p>
+</div>
+<div class="tech-item">
+<i class="fa-solid fa-circle tech-bullet"></i>
+<p class="tech-text"><span class="tech-highlight">SMTP:</span> 표준 이메일 프로토콜을 이용한 자동 회신</p>
+</div>
+</div>
+<div class="tag-container">
+<span class="tech-tag">REST API</span>
+<span class="tech-tag">JSON</span>
+<span class="tech-tag">Webhook</span>
+</div>
+</div>
+<!-- 4. Architecture -->
+<div class="tech-card card-arch">
+<div class="card-header">
+<div class="icon-wrapper">
+<i class="fa-solid fa-sitemap"></i>
+</div>
+<h2 class="card-title">Architecture &amp; Design</h2>
+</div>
+<div class="card-body">
+<div class="tech-item">
+<i class="fa-solid fa-circle tech-bullet"></i>
+<p class="tech-text"><span class="tech-highlight">Plugin Architecture:</span> Base 클래스 상속을 통한 유연한 확장 구조</p>
+</div>
+<div class="tech-item">
+<i class="fa-solid fa-circle tech-bullet"></i>
+<p class="tech-text"><span class="tech-highlight">Configuration:</span> 환경변수(.env) 및 YAML 설정을 통한 제어</p>
+</div>
+<div class="tech-item">
+<i class="fa-solid fa-circle tech-bullet"></i>
+<p class="tech-text"><span class="tech-highlight">Modular:</span> 기능별 모듈화로 유지보수성 향상</p>
+</div>
+</div>
+<div class="tag-container">
+<span class="tech-tag">OOP</span>
+<span class="tech-tag">Factory Pattern</span>
+<span class="tech-tag">Modular</span>
+</div>
+</div>
+</div>
+</div>
+<script defer="" src="./vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon="{&quot;rayId&quot;:&quot;9dce3f8678f8d1eb&quot;,&quot;serverTiming&quot;:{&quot;name&quot;:{&quot;cfExtPri&quot;:true,&quot;cfEdge&quot;:true,&quot;cfOrigin&quot;:true,&quot;cfL4&quot;:true,&quot;cfSpeedBrain&quot;:true,&quot;cfCacheStatus&quot;:true}},&quot;version&quot;:&quot;2025.9.1&quot;,&quot;token&quot;:&quot;4edd5f8ec12a48cfa682ab8261b80a79&quot;}" crossorigin="anonymous"></script>
+
+<script src="./slide-inner.js.다운로드"></script></body></html>

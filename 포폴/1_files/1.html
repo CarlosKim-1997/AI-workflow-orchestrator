@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<!-- saved from url=(0044)https://www.genspark.ai/api/files/s/Gj0RGEiX -->
+<html lang="ko"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>AI 워크플로우 오케스트레이터 - 커버</title>
+<link href="./tailwind.min.css" rel="stylesheet">
+<link href="./css2(1)" rel="stylesheet">
+<link href="./all.min.css" rel="stylesheet">
+<style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Noto Sans KR', sans-serif;
+            overflow: hidden;
+            background-color: #0f172a; /* Slate 900 */
+        }
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            background-color: #0f172a;
+            color: white;
+            overflow: hidden;
+        }
+        .bg-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.1;
+            z-index: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2394a3b8' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        .accent-circle {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            z-index: 1;
+        }
+        .circle-1 {
+            width: 400px;
+            height: 400px;
+            background-color: #0ea5e9; /* Sky 500 */
+            top: -100px;
+            right: -100px;
+            opacity: 0.2;
+        }
+        .circle-2 {
+            width: 300px;
+            height: 300px;
+            background-color: #f97316; /* Orange 500 */
+            bottom: -50px;
+            left: -50px;
+            opacity: 0.15;
+        }
+        .content-wrapper {
+            position: relative;
+            z-index: 10;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 80px;
+        }
+        .tag-pill {
+            display: inline-block;
+            background-color: rgba(14, 165, 233, 0.15);
+            color: #38bdf8;
+            padding: 6px 16px;
+            border-radius: 9999px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            margin-bottom: 24px;
+            border: 1px solid rgba(56, 189, 248, 0.3);
+        }
+        .main-title {
+            font-size: 3.5rem;
+            font-weight: 900;
+            line-height: 1.2;
+            margin-bottom: 16px;
+            background: -webkit-linear-gradient(left, #ffffff, #e2e8f0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent; /* Fallback for non-gradient support */
+            color: white; /* Fallback */
+        }
+        .subtitle {
+            font-size: 1.75rem;
+            font-weight: 400;
+            color: #94a3b8; /* Slate 400 */
+            margin-bottom: 48px;
+        }
+        .flow-diagram {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            background: rgba(30, 41, 59, 0.5); /* Slate 800 with opacity */
+            padding: 30px;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            width: fit-content;
+        }
+        .flow-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 10px;
+            min-width: 100px;
+        }
+        .flow-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            background-color: #1e293b;
+            border: 1px solid #334155;
+            color: #e2e8f0;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        .flow-text {
+            font-size: 0.9rem;
+            color: #cbd5e1;
+            font-weight: 500;
+        }
+        .flow-arrow {
+            color: #64748b;
+            font-size: 1.2rem;
+        }
+        .icon-jira { color: #2684FF; }
+        .icon-slack { color: #ECB22E; }
+        .icon-email { color: #f97316; }
+        .icon-ai { color: #10b981; }
+        
+        .footer-note {
+            position: absolute;
+            bottom: 40px;
+            left: 80px;
+            right: 80px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+        }
+        .note-text {
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+        .badge-poc {
+            background-color: #f97316;
+            color: white;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+        }
+    </style>
+<style id="slide-selected-style">
+  [data-slide-selected]::before
+  /* [data-slide-hover-selected]::before */ {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    width: 100%;
+    height: 100%;
+    box-sizing: content-box;
+    padding: 4px;
+    border-radius: 0px;
+    outline: 2px solid #0f7fff !important;
+    z-index: 10000;
+    pointer-events: none;
+  }
+
+ /* [data-slide-hover-selected], */
+  [data-slide-selected] {
+    position: relative;
+    outline: none;
+    cursor: default;
+  }
+
+  img[data-slide-selected],
+  img[data-slide-hover-selected],
+  [data-slide-hover-selected],
+  [item-slide-click-selected],
+  [item-slide-selected] {
+    border: 2px solid #0f7fff !important;
+  }
+
+
+</style><style>undefined</style><link rel="preconnect" href="https://fonts.googleapis.com/" crossorigin="use-credentials"><link rel="preconnect" href="https://fonts.gstatic.com/"><link rel="stylesheet" href="./css2"></head>
+<body>
+<div class="slide-container">
+<!-- Background Elements -->
+<div class="bg-pattern"></div>
+<div class="accent-circle circle-1"></div>
+<div class="accent-circle circle-2"></div>
+<!-- Main Content -->
+<div class="content-wrapper">
+<div style="width: 100%;">
+<p class="tag-pill">엔터프라이즈 AI 트랜스포메이션 PoC</p>
+</div>
+<div>
+<h1 class="main-title">AI 워크플로우<br>오케스트레이터</h1>
+<p class="subtitle">고객 이메일 분석 · 분류 · 라우팅 자동화 데모</p>
+</div>
+<!-- Visual Workflow Representation -->
+<div class="flow-diagram">
+<div class="flow-item">
+<div class="flow-icon icon-email">
+<i class="fa-regular fa-envelope"></i>
+</div>
+<p class="flow-text">Email 유입</p>
+</div>
+<div class="flow-arrow">
+<i class="fa-solid fa-arrow-right-long"></i>
+</div>
+<div class="flow-item">
+<div class="flow-icon icon-ai" style="border-color: #10b981; background-color: rgba(16, 185, 129, 0.1);">
+<i class="fa-solid fa-brain"></i>
+</div>
+<p class="flow-text">AI 분석</p>
+</div>
+<div class="flow-arrow">
+<i class="fa-solid fa-arrow-right-long"></i>
+</div>
+<div class="flow-item">
+<div class="flow-icon">
+<i class="fa-solid fa-gears"></i>
+</div>
+<p class="flow-text">워크플로우 생성</p>
+</div>
+<div class="flow-arrow">
+<i class="fa-solid fa-arrow-right-long"></i>
+</div>
+<div class="flow-item">
+<div class="flow-icon" style="flex-direction: row; width: 100px; justify-content: space-evenly; gap: 0;">
+<i class="fa-brands fa-jira icon-jira"></i>
+<i class="fa-brands fa-slack icon-slack"></i>
+<i class="fa-regular fa-paper-plane icon-email"></i>
+</div>
+<p class="flow-text">자동 실행 &amp; 연동</p>
+</div>
+</div>
+</div>
+<!-- Footer -->
+<div class="footer-note">
+<p class="note-text"><span class="badge-poc">DEMO / PoC</span> &nbsp; 본 프로젝트는 포트폴리오용 데모이며, 실제 동작 검증을 위한 아키텍처를 포함합니다.</p>
+<p class="note-text">2026.03.15</p>
+</div>
+</div>
+<script defer="" src="./vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon="{&quot;rayId&quot;:&quot;9dce3f8658d8d1eb&quot;,&quot;serverTiming&quot;:{&quot;name&quot;:{&quot;cfExtPri&quot;:true,&quot;cfEdge&quot;:true,&quot;cfOrigin&quot;:true,&quot;cfL4&quot;:true,&quot;cfSpeedBrain&quot;:true,&quot;cfCacheStatus&quot;:true}},&quot;version&quot;:&quot;2025.9.1&quot;,&quot;token&quot;:&quot;4edd5f8ec12a48cfa682ab8261b80a79&quot;}" crossorigin="anonymous"></script>
+
+<script src="./slide-inner.js.다운로드"></script></body></html>

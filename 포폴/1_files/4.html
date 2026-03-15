@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<!-- saved from url=(0044)https://www.genspark.ai/api/files/s/9kv9ekUY -->
+<html lang="ko"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>해결하려는 문제와 솔루션</title>
+<link href="./tailwind.min.css" rel="stylesheet">
+<link href="./css2(1)" rel="stylesheet">
+<link href="./all.min.css" rel="stylesheet">
+<style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Noto Sans KR', sans-serif;
+            overflow: hidden;
+            background-color: #0f172a; /* Slate 900 */
+        }
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            background-color: #0f172a;
+            color: white;
+            overflow: hidden;
+        }
+        .bg-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.05;
+            z-index: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2394a3b8' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        .header {
+            padding: 40px 80px 10px;
+            z-index: 10;
+        }
+        .main-title {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: white;
+            border-left: 6px solid #ef4444; /* Red 500 for Problem focus */
+            padding-left: 20px;
+            margin: 0;
+        }
+        .subtitle {
+            font-size: 1rem;
+            color: #94a3b8; /* Slate 400 */
+            margin-top: 5px;
+            padding-left: 26px;
+            font-weight: 500;
+        }
+        
+        .content-wrapper {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            padding: 20px 80px 50px;
+            z-index: 10;
+            justify-content: space-between;
+        }
+
+        /* Problem Section */
+        .problem-section {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 10px;
+        }
+        .problem-card {
+            flex: 1;
+            background-color: #1e293b; /* Slate 800 */
+            border: 1px solid rgba(239, 68, 68, 0.2); /* Red tint border */
+            border-radius: 12px;
+            padding: 25px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .problem-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background-color: #ef4444; /* Red 500 */
+        }
+        .problem-icon-wrapper {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: rgba(239, 68, 68, 0.1);
+            color: #ef4444;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        .problem-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #f1f5f9;
+            margin-bottom: 10px;
+        }
+        .problem-desc {
+            font-size: 0.9rem;
+            color: #cbd5e1;
+            line-height: 1.5;
+        }
+
+        /* Arrow Transition */
+        .transition-area {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 60px;
+            position: relative;
+        }
+        .arrow-down {
+            color: #64748b;
+            font-size: 2rem;
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-10px);}
+            60% {transform: translateY(-5px);}
+        }
+
+        /* Solution Section */
+        .solution-section {
+            background-color: rgba(14, 165, 233, 0.1); /* Sky 500 with opacity */
+            border: 2px solid #0ea5e9;
+            border-radius: 16px;
+            padding: 30px 40px;
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            position: relative;
+            box-shadow: 0 0 20px rgba(14, 165, 233, 0.15);
+        }
+        .solution-icon-large {
+            width: 80px;
+            height: 80px;
+            background-color: #0ea5e9;
+            color: white;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            box-shadow: 0 10px 15px -3px rgba(14, 165, 233, 0.5);
+            flex-shrink: 0;
+        }
+        .solution-content {
+            flex: 1;
+        }
+        .solution-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #38bdf8; /* Sky 400 */
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .solution-text {
+            font-size: 1.25rem;
+            color: white;
+            line-height: 1.4;
+            font-weight: 500;
+        }
+        .highlight-text {
+            color: #f97316; /* Orange 500 */
+            font-weight: 700;
+            background-color: rgba(249, 115, 22, 0.1);
+            padding: 0 6px;
+            border-radius: 4px;
+        }
+
+        .decorative-line {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: rgba(100, 116, 139, 0.2);
+            transform: translateX(-50%);
+            z-index: -1;
+            display: none; /* Hidden for this layout */
+        }
+    </style>
+<style id="slide-selected-style">
+  [data-slide-selected]::before
+  /* [data-slide-hover-selected]::before */ {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    width: 100%;
+    height: 100%;
+    box-sizing: content-box;
+    padding: 4px;
+    border-radius: 0px;
+    outline: 2px solid #0f7fff !important;
+    z-index: 10000;
+    pointer-events: none;
+  }
+
+ /* [data-slide-hover-selected], */
+  [data-slide-selected] {
+    position: relative;
+    outline: none;
+    cursor: default;
+  }
+
+  img[data-slide-selected],
+  img[data-slide-hover-selected],
+  [data-slide-hover-selected],
+  [item-slide-click-selected],
+  [item-slide-selected] {
+    border: 2px solid #0f7fff !important;
+  }
+
+
+</style><style>undefined</style><link rel="preconnect" href="https://fonts.googleapis.com/" crossorigin="use-credentials"><link rel="preconnect" href="https://fonts.gstatic.com/"><link rel="stylesheet" href="./css2"></head>
+<body>
+<div class="slide-container">
+<!-- Background -->
+<div class="bg-pattern"></div>
+<!-- Header -->
+<div class="header">
+<h1 class="main-title">해결하려는 문제와 방향</h1>
+<p class="subtitle">기존 수동 프로세스의 한계와 AI 기반 자동화 솔루션</p>
+</div>
+<!-- Main Content -->
+<div class="content-wrapper">
+<!-- Problems: Top Row -->
+<div class="problem-section">
+<!-- Problem 1 -->
+<div class="problem-card">
+<div class="problem-icon-wrapper">
+<i class="fa-regular fa-clock"></i>
+</div>
+<h3 class="problem-title">
+<p>수동 분류 시간 과다</p>
+</h3>
+<div class="problem-desc">
+<p>하루 수백 건의 이메일을 담당자가 일일이 읽고 분류하여 업무 처리가 지연됨</p>
+</div>
+</div>
+<!-- Problem 2 -->
+<div class="problem-card">
+<div class="problem-icon-wrapper">
+<i class="fa-solid fa-user-tag"></i>
+</div>
+<h3 class="problem-title">
+<p>담당자 파악 지연</p>
+</h3>
+<div class="problem-desc">
+<p>부서 간 업무 이관 시, 적절한 담당자를 찾는 과정에서 병목 현상 발생</p>
+</div>
+</div>
+<!-- Problem 3 -->
+<div class="problem-card">
+<div class="problem-icon-wrapper">
+<i class="fa-regular fa-keyboard"></i>
+</div>
+<h3 class="problem-title">
+<p>시스템 중복 입력</p>
+</h3>
+<div class="problem-desc">
+<p>Jira 티켓 생성, Slack 알림, 이메일 회신 등 여러 시스템에 동일 내용 반복 입력</p>
+</div>
+</div>
+<!-- Problem 4 -->
+<div class="problem-card">
+<div class="problem-icon-wrapper">
+<i class="fa-solid fa-triangle-exclamation"></i>
+</div>
+<h3 class="problem-title">
+<p>긴급 건 누락 위험</p>
+</h3>
+<div class="problem-desc">
+<p>사람의 주관적 판단이나 실수로 중요/긴급 이슈가 누락될 가능성 상존</p>
+</div>
+</div>
+</div>
+<!-- Transition Arrow -->
+<div class="transition-area">
+<i class="fa-solid fa-angles-down arrow-down"></i>
+</div>
+<!-- Solution: Bottom Row -->
+<div class="solution-section">
+<div class="solution-icon-large">
+<i class="fa-solid fa-wand-magic-sparkles"></i>
+</div>
+<div class="solution-content">
+<h2 class="solution-title">AI Automation Solution</h2>
+<div class="solution-text">
+<p>AI가 이메일 내용을 분석하여 <span class="highlight-text">의도·부서·우선순위</span>를 자동으로 산출하고,<br>
+                        Jira·Slack과 연동된 <span class="highlight-text">워크플로우를 즉시 생성·실행</span>하여 업무 효율을 극대화합니다.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script defer="" src="./vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon="{&quot;rayId&quot;:&quot;9dce3f8678f3d1eb&quot;,&quot;serverTiming&quot;:{&quot;name&quot;:{&quot;cfExtPri&quot;:true,&quot;cfEdge&quot;:true,&quot;cfOrigin&quot;:true,&quot;cfL4&quot;:true,&quot;cfSpeedBrain&quot;:true,&quot;cfCacheStatus&quot;:true}},&quot;version&quot;:&quot;2025.9.1&quot;,&quot;token&quot;:&quot;4edd5f8ec12a48cfa682ab8261b80a79&quot;}" crossorigin="anonymous"></script>
+
+<script src="./slide-inner.js.다운로드"></script></body></html>

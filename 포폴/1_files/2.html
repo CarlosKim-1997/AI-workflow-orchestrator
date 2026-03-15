@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<!-- saved from url=(0044)https://www.genspark.ai/api/files/s/RJtSXjUz -->
+<html lang="ko"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>프로젝트 개요</title>
+<link href="./tailwind.min.css" rel="stylesheet">
+<link href="./css2(1)" rel="stylesheet">
+<link href="./all.min.css" rel="stylesheet">
+<style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Noto Sans KR', sans-serif;
+            overflow: hidden;
+            background-color: #0f172a; /* Slate 900 */
+        }
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            background-color: #0f172a;
+            color: white;
+            overflow: hidden;
+        }
+        .bg-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.05;
+            z-index: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2394a3b8' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        .header {
+            padding: 50px 80px 30px;
+            z-index: 10;
+        }
+        .main-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            color: white;
+            border-left: 6px solid #f97316; /* Orange 500 */
+            padding-left: 20px;
+        }
+        .subtitle {
+            font-size: 1.1rem;
+            color: #94a3b8; /* Slate 400 */
+            padding-left: 26px;
+        }
+        .content-wrapper {
+            flex: 1;
+            display: flex;
+            padding: 20px 80px 60px;
+            gap: 30px;
+            z-index: 10;
+            align-items: stretch;
+        }
+        .card {
+            flex: 1;
+            background-color: #1e293b; /* Slate 800 */
+            border-radius: 16px;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.2s;
+        }
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+        }
+        .card-1::before { background-color: #0ea5e9; } /* Sky 500 */
+        .card-2::before { background-color: #10b981; } /* Emerald 500 */
+        .card-3::before { background-color: #f97316; } /* Orange 500 */
+        
+        .icon-container {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+        .card-1 .icon-container { background-color: rgba(14, 165, 233, 0.1); color: #0ea5e9; }
+        .card-2 .icon-container { background-color: rgba(16, 185, 129, 0.1); color: #10b981; }
+        .card-3 .icon-container { background-color: rgba(249, 115, 22, 0.1); color: #f97316; }
+        
+        .card-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #f1f5f9;
+        }
+        .card-text {
+            font-size: 1rem;
+            color: #cbd5e1;
+            line-height: 1.6;
+            flex-grow: 1;
+        }
+        .highlight {
+            color: #fff;
+            font-weight: 600;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 0 4px;
+            border-radius: 4px;
+        }
+        .badge-container {
+            margin-top: 20px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .badge {
+            font-size: 0.75rem;
+            padding: 4px 10px;
+            border-radius: 9999px;
+            font-weight: 600;
+            background-color: rgba(255, 255, 255, 0.05);
+            color: #94a3b8;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .footer-note {
+            position: absolute;
+            bottom: 30px;
+            right: 80px;
+            font-size: 0.9rem;
+            color: #64748b;
+            text-align: right;
+        }
+    </style>
+<style id="slide-selected-style">
+  [data-slide-selected]::before
+  /* [data-slide-hover-selected]::before */ {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    width: 100%;
+    height: 100%;
+    box-sizing: content-box;
+    padding: 4px;
+    border-radius: 0px;
+    outline: 2px solid #0f7fff !important;
+    z-index: 10000;
+    pointer-events: none;
+  }
+
+ /* [data-slide-hover-selected], */
+  [data-slide-selected] {
+    position: relative;
+    outline: none;
+    cursor: default;
+  }
+
+  img[data-slide-selected],
+  img[data-slide-hover-selected],
+  [data-slide-hover-selected],
+  [item-slide-click-selected],
+  [item-slide-selected] {
+    border: 2px solid #0f7fff !important;
+  }
+
+
+</style><link rel="preconnect" href="https://fonts.googleapis.com/" crossorigin="use-credentials"><link rel="preconnect" href="https://fonts.gstatic.com/"><link rel="stylesheet" href="./css2"><style>undefined</style></head>
+<body>
+<div class="slide-container">
+<div class="bg-pattern"></div>
+<div class="header">
+<h1 class="main-title">프로젝트 개요</h1>
+<p class="subtitle">AI 기반 이메일 분석 및 워크플로우 자동화 PoC 시스템</p>
+</div>
+<div class="content-wrapper">
+<!-- Card 1: Summary -->
+<div class="card card-1">
+<div class="icon-container">
+<i class="fa-solid fa-layer-group"></i>
+</div>
+<h2 class="card-title">한 줄 요약</h2>
+<div class="card-text">
+<p>고객 이메일을 <span class="highlight">AI가 분석</span>해 의도·부서·우선순위를 판단하고, Jira·Slack·이메일 등과 연동해 <span class="highlight">워크플로우를 자동 실행</span>하는 데모 애플리케이션입니다.</p>
+</div>
+<div class="badge-container">
+<span class="badge">#자동화</span>
+<span class="badge">#AI분석</span>
+<span class="badge">#시스템연동</span>
+</div>
+</div>
+<!-- Card 2: Purpose -->
+<div class="card card-2">
+<div class="icon-container">
+<i class="fa-solid fa-bullseye"></i>
+</div>
+<h2 class="card-title">목적</h2>
+<div class="card-text">
+<p>대기업 고객센터나 지원팀처럼 <span class="highlight">이메일 유입이 많은 환경</span>에서 "분류·라우팅·시스템 입력"을 자동화하는 방안을 <span class="highlight">시연 및 검증</span>하기 위해 제작되었습니다.</p>
+</div>
+<div class="badge-container">
+<span class="badge">#업무효율화</span>
+<span class="badge">#검증</span>
+<span class="badge">#시연</span>
+</div>
+</div>
+<!-- Card 3: Nature -->
+<div class="card card-3">
+<div class="icon-container">
+<i class="fa-solid fa-flask"></i>
+</div>
+<h2 class="card-title">성격 (PoC)</h2>
+<div class="card-text">
+<p>실제 운영용이 아닌 <span class="highlight">테스트·PoC·포트폴리오용</span> 프로젝트입니다. 실제 전체 연동 테스트 시에는 OpenAI, Jira, Slack 등 각 서비스의 <span class="highlight">API 키와 계정</span>이 필요합니다.</p>
+</div>
+<div class="badge-container">
+<span class="badge">#데모</span>
+<span class="badge">#포트폴리오</span>
+<span class="badge">#API연동필요</span>
+</div>
+</div>
+</div>
+<div class="footer-note">
+<p>*PoC (Proof of Concept): 개념 증명</p>
+</div>
+</div>
+<script defer="" src="./vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon="{&quot;rayId&quot;:&quot;9dce3f8678f0d1eb&quot;,&quot;serverTiming&quot;:{&quot;name&quot;:{&quot;cfExtPri&quot;:true,&quot;cfEdge&quot;:true,&quot;cfOrigin&quot;:true,&quot;cfL4&quot;:true,&quot;cfSpeedBrain&quot;:true,&quot;cfCacheStatus&quot;:true}},&quot;version&quot;:&quot;2025.9.1&quot;,&quot;token&quot;:&quot;4edd5f8ec12a48cfa682ab8261b80a79&quot;}" crossorigin="anonymous"></script>
+
+<script src="./slide-inner.js.다운로드"></script></body></html>

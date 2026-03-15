@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<!-- saved from url=(0044)https://www.genspark.ai/api/files/s/l5SBr5hb -->
+<html lang="ko"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>마무리 - AI 워크플로우 오케스트레이터</title>
+<link href="./tailwind.min.css" rel="stylesheet">
+<link href="./css2(1)" rel="stylesheet">
+<link href="./all.min.css" rel="stylesheet">
+<style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Noto Sans KR', sans-serif;
+            overflow: hidden;
+            background-color: #0f172a; /* Slate 900 */
+        }
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            background-color: #0f172a;
+            color: white;
+            overflow: hidden;
+            align-items: center;
+            justify-content: center;
+        }
+        .bg-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.05;
+            z-index: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2394a3b8' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        
+        .content-box {
+            z-index: 10;
+            text-align: center;
+            max-width: 900px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .main-icon-wrapper {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(168, 85, 247, 0.2));
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+            box-shadow: 0 0 40px rgba(59, 130, 246, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+        }
+
+        /* Decorative ring around icon */
+        .main-icon-wrapper::after {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border: 2px dashed rgba(255, 255, 255, 0.1);
+            border-radius: 40px;
+            animation: spin 20s linear infinite;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .main-icon {
+            font-size: 4rem;
+            background: -webkit-linear-gradient(#60a5fa, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .final-title {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin: 0;
+            line-height: 1.2;
+            background: linear-gradient(to right, #ffffff, #cbd5e1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        .final-subtitle {
+            font-size: 1.4rem;
+            color: #94a3b8;
+            font-weight: 400;
+            margin: 10px 0 0 0;
+            letter-spacing: -0.02em;
+        }
+
+        .poc-notice-box {
+            margin-top: 30px;
+            background-color: rgba(245, 158, 11, 0.08); /* Amber 500 with opacity */
+            border: 1px solid rgba(245, 158, 11, 0.3);
+            border-radius: 12px;
+            padding: 25px 40px;
+            max-width: 800px;
+            width: 100%;
+            display: flex;
+            align-items: flex-start;
+            gap: 24px;
+            text-align: left;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .poc-notice-box::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background-color: #f59e0b;
+        }
+
+        .notice-icon {
+            color: #f59e0b; /* Amber 500 */
+            font-size: 1.8rem;
+            margin-top: 2px;
+            filter: drop-shadow(0 0 5px rgba(245, 158, 11, 0.3));
+        }
+
+        .notice-content h3 {
+            color: #fbbf24; /* Amber 400 */
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin: 0 0 8px 0;
+        }
+
+        .notice-content p {
+            color: #cbd5e1;
+            font-size: 1rem;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .highlight-bold {
+            color: #e2e8f0;
+            font-weight: 700;
+            border-bottom: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .footer-info {
+            margin-top: 60px;
+            display: flex;
+            gap: 40px;
+            color: #64748b;
+            font-size: 0.9rem;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            width: 100%;
+            justify-content: center;
+        }
+
+        .footer-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-item i {
+            color: #475569;
+        }
+
+        .thank-you {
+            position: absolute;
+            bottom: 30px;
+            right: 40px;
+            font-size: 5rem;
+            font-weight: 900;
+            color: rgba(255, 255, 255, 0.03);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+    </style>
+<style id="slide-selected-style">
+  [data-slide-selected]::before
+  /* [data-slide-hover-selected]::before */ {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    width: 100%;
+    height: 100%;
+    box-sizing: content-box;
+    padding: 4px;
+    border-radius: 0px;
+    outline: 2px solid #0f7fff !important;
+    z-index: 10000;
+    pointer-events: none;
+  }
+
+ /* [data-slide-hover-selected], */
+  [data-slide-selected] {
+    position: relative;
+    outline: none;
+    cursor: default;
+  }
+
+  img[data-slide-selected],
+  img[data-slide-hover-selected],
+  [data-slide-hover-selected],
+  [item-slide-click-selected],
+  [item-slide-selected] {
+    border: 2px solid #0f7fff !important;
+  }
+
+
+</style><style>undefined</style><link rel="preconnect" href="https://fonts.googleapis.com/" crossorigin="use-credentials"><link rel="preconnect" href="https://fonts.gstatic.com/"><link rel="stylesheet" href="./css2"></head>
+<body>
+<div class="slide-container">
+<div class="bg-pattern"></div>
+<div class="thank-you">THANK YOU</div>
+<div class="content-box">
+<div class="main-icon-wrapper">
+<i class="fa-solid fa-rocket main-icon"></i>
+</div>
+<div>
+<h1 class="final-title">AI Workflow Orchestrator</h1>
+<p class="final-subtitle">엔터프라이즈 환경의 지능형 업무 자동화를 위한 여정</p>
+</div>
+<div class="poc-notice-box">
+<i class="fa-solid fa-circle-info notice-icon"></i>
+<div class="notice-content">
+<h3>포트폴리오 &amp; PoC 안내</h3>
+<p>본 프로젝트는 <span class="highlight-bold">테스트 및 개념 증명(PoC)</span> 목적으로 제작된 데모 애플리케이션입니다.<br>
+                    실제 엔터프라이즈 연동을 검증하기 위해서는 <span class="highlight-bold">OpenAI, Jira, Slack, 이메일 서비스</span> 등의 유효한 API 키와 계정 설정이 필요합니다.</p>
+</div>
+</div>
+<div class="footer-info">
+<div class="footer-item">
+<i class="fa-brands fa-github fa-lg"></i>
+<p>github.com/username/ai-workflow-poc</p>
+</div>
+<div class="footer-item">
+<i class="fa-regular fa-envelope fa-lg"></i>
+<p>contact@email.com</p>
+</div>
+<div class="footer-item">
+<i class="fa-solid fa-file-code fa-lg"></i>
+<p>Tech Stack: Streamlit, OpenAI, Jira Cloud</p>
+</div>
+</div>
+</div>
+</div>
+<script defer="" src="./vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon="{&quot;rayId&quot;:&quot;9dce6663ee8fd1d3&quot;,&quot;serverTiming&quot;:{&quot;name&quot;:{&quot;cfExtPri&quot;:true,&quot;cfEdge&quot;:true,&quot;cfOrigin&quot;:true,&quot;cfL4&quot;:true,&quot;cfSpeedBrain&quot;:true,&quot;cfCacheStatus&quot;:true}},&quot;version&quot;:&quot;2025.9.1&quot;,&quot;token&quot;:&quot;4edd5f8ec12a48cfa682ab8261b80a79&quot;}" crossorigin="anonymous"></script>
+
+<script src="./slide-inner.js.다운로드"></script></body></html>

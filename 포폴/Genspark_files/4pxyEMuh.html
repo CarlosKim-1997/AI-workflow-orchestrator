@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<!-- saved from url=(0044)https://www.genspark.ai/api/files/s/4pxyEMuh -->
+<html lang="ko"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>기대 효과</title>
+<link href="./tailwind.min.css" rel="stylesheet">
+<link href="./css2(1)" rel="stylesheet">
+<link href="./all.min.css" rel="stylesheet">
+<style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Noto Sans KR', sans-serif;
+            overflow: hidden;
+            background-color: #0f172a; /* Slate 900 */
+        }
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            background-color: #0f172a;
+            color: white;
+            overflow: hidden;
+        }
+        .bg-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.05;
+            z-index: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2394a3b8' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        .header {
+            padding: 40px 80px 20px;
+            z-index: 10;
+        }
+        .main-title {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: white;
+            border-left: 6px solid #f59e0b; /* Amber 500 */
+            padding-left: 20px;
+            margin: 0;
+        }
+        .subtitle {
+            font-size: 1rem;
+            color: #94a3b8; /* Slate 400 */
+            margin-top: 5px;
+            padding-left: 26px;
+            font-weight: 500;
+        }
+        
+        .content-wrapper {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            padding: 20px 80px 60px;
+            z-index: 10;
+            justify-content: center;
+        }
+
+        .table-container {
+            width: 100%;
+            background-color: #1e293b; /* Slate 800 */
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .benefit-table {
+            width: 100%;
+            border-collapse: collapse;
+            table-layout: fixed;
+        }
+
+        .benefit-table th {
+            background-color: #0f172a; /* Slate 900 */
+            color: #94a3b8;
+            font-weight: 600;
+            padding: 20px 24px;
+            text-align: left;
+            border-bottom: 2px solid #334155;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .benefit-table td {
+            padding: 24px;
+            border-bottom: 1px solid #334155;
+            vertical-align: middle;
+            color: #e2e8f0;
+            font-size: 1.1rem;
+        }
+
+        .benefit-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .benefit-table tr:hover {
+            background-color: rgba(255, 255, 255, 0.02);
+        }
+
+        .metric-cell {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        .metric-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 10px;
+            background-color: rgba(245, 158, 11, 0.1);
+            color: #f59e0b; /* Amber 500 */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+        .metric-text {
+            font-weight: 700;
+            font-size: 1.15rem;
+        }
+
+        .asis-text {
+            color: #94a3b8; /* Slate 400 */
+            font-weight: 400;
+        }
+
+        .tobe-text {
+            color: white;
+            font-weight: 700;
+        }
+
+        .improve-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: rgba(16, 185, 129, 0.1); /* Emerald 500 background */
+            color: #10b981; /* Emerald 500 text */
+            padding: 8px 16px;
+            border-radius: 9999px;
+            font-weight: 800;
+            font-size: 1rem;
+        }
+
+        .note-text {
+            margin-top: 20px;
+            text-align: right;
+            font-size: 0.85rem;
+            color: #64748b;
+            font-style: italic;
+        }
+
+        /* Column Widths */
+        .col-metric { width: 35%; }
+        .col-asis { width: 22%; }
+        .col-tobe { width: 22%; }
+        .col-improve { width: 21%; }
+
+    </style>
+<style id="slide-selected-style">
+  [data-slide-selected]::before
+  /* [data-slide-hover-selected]::before */ {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    width: 100%;
+    height: 100%;
+    box-sizing: content-box;
+    padding: 4px;
+    border-radius: 0px;
+    outline: 2px solid #0f7fff !important;
+    z-index: 10000;
+    pointer-events: none;
+  }
+
+ /* [data-slide-hover-selected], */
+  [data-slide-selected] {
+    position: relative;
+    outline: none;
+    cursor: default;
+  }
+
+  img[data-slide-selected],
+  img[data-slide-hover-selected],
+  [data-slide-hover-selected],
+  [item-slide-click-selected],
+  [item-slide-selected] {
+    border: 2px solid #0f7fff !important;
+  }
+
+
+</style><style>undefined</style><link rel="preconnect" href="https://fonts.googleapis.com/" crossorigin="use-credentials"><link rel="preconnect" href="https://fonts.gstatic.com/"><link rel="stylesheet" href="./css2"></head>
+<body>
+<div class="slide-container">
+<!-- Background -->
+<div class="bg-pattern"></div>
+<!-- Header -->
+<div class="header">
+<h1 class="main-title">기대 효과 (Expected Benefits)</h1>
+<p class="subtitle">AI 자동화 도입을 통한 정량적 업무 효율 개선 예시</p>
+</div>
+<!-- Content -->
+<div class="content-wrapper">
+<div class="table-container">
+<table class="benefit-table">
+<colgroup>
+<col class="col-metric">
+<col class="col-asis">
+<col class="col-tobe">
+<col class="col-improve">
+</colgroup>
+<thead>
+<tr>
+<th>핵심 지표 (Metric)</th>
+<th>현재 (AS-IS)</th>
+<th>PoC 적용 시 (TO-BE)</th>
+<th>개선 효과</th>
+</tr>
+</thead>
+<tbody>
+<!-- Row 1: Time -->
+<tr>
+<td>
+<div class="metric-cell">
+<div class="metric-icon">
+<i class="fa-regular fa-clock"></i>
+</div>
+<span class="metric-text">이메일 분류 소요 시간</span>
+</div>
+</td>
+<td>
+<p class="asis-text">건당 3 ~ 5분</p>
+</td>
+<td>
+<p class="tobe-text">건당 10 ~ 20초</p>
+</td>
+<td>
+<span class="improve-badge">
+<i class="fa-solid fa-arrow-down"></i> 90%
+                                </span>
+</td>
+</tr>
+<!-- Row 2: Delay -->
+<tr>
+<td>
+<div class="metric-cell">
+<div class="metric-icon">
+<i class="fa-solid fa-user-clock"></i>
+</div>
+<span class="metric-text">담당자 배정 지연</span>
+</div>
+</td>
+<td>
+<p class="asis-text">당일 ~ 익일</p>
+</td>
+<td>
+<p class="tobe-text">실시간 (Real-time)</p>
+</td>
+<td>
+<span class="improve-badge">
+<i class="fa-solid fa-check"></i> SLA 준수
+                                </span>
+</td>
+</tr>
+<!-- Row 3: Input Count -->
+<tr>
+<td>
+<div class="metric-cell">
+<div class="metric-icon">
+<i class="fa-regular fa-keyboard"></i>
+</div>
+<span class="metric-text">시스템 입력 횟수</span>
+</div>
+</td>
+<td>
+<p class="asis-text">평균 3회 (중복 입력)</p>
+</td>
+<td>
+<p class="tobe-text">0 ~ 1회 (자동/검수)</p>
+</td>
+<td>
+<span class="improve-badge">
+<i class="fa-solid fa-arrow-down"></i> 70% 이상
+                                </span>
+</td>
+</tr>
+<!-- Row 4: Error Rate -->
+<tr>
+<td>
+<div class="metric-cell">
+<div class="metric-icon">
+<i class="fa-solid fa-triangle-exclamation"></i>
+</div>
+<span class="metric-text">긴급 건 누락률</span>
+</div>
+</td>
+<td>
+<p class="asis-text">5 ~ 10% (Human Error)</p>
+</td>
+<td>
+<p class="tobe-text">1% 미만 (알림 보장)</p>
+</td>
+<td>
+<span class="improve-badge">
+<i class="fa-solid fa-arrow-down"></i> 80%p
+                                </span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p class="note-text">※ 위 수치는 PoC 테스트 결과를 바탕으로 추산된 예시이며, 실제 운영 환경 및 데이터 양에 따라 달라질 수 있습니다.</p>
+</div>
+</div>
+<script defer="" src="./vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon="{&quot;rayId&quot;:&quot;9dce6663ee8dd1d3&quot;,&quot;serverTiming&quot;:{&quot;name&quot;:{&quot;cfExtPri&quot;:true,&quot;cfEdge&quot;:true,&quot;cfOrigin&quot;:true,&quot;cfL4&quot;:true,&quot;cfSpeedBrain&quot;:true,&quot;cfCacheStatus&quot;:true}},&quot;version&quot;:&quot;2025.9.1&quot;,&quot;token&quot;:&quot;4edd5f8ec12a48cfa682ab8261b80a79&quot;}" crossorigin="anonymous"></script>
+
+<script src="./slide-inner.js.다운로드"></script></body></html>
